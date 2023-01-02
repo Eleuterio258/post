@@ -11,11 +11,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
-        $post->userId = $request->userId;
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
-        return response()->json($post);
+
+         return response()->json($post, 201);
+
     }
     //list all posts
 
@@ -46,6 +48,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return response()->json('deleted');
+
+                return response()->json('deleted', 200);
+
     }
 }
